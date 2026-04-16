@@ -1,18 +1,79 @@
 ---
 layout: page
-title: About
+title: 关于我
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# 关于我
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+## 个人简介
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+我是小徐，一名软件工程专业的学生，热爱编程和技术分享。我喜欢探索各种技术领域，尤其是 Java 后端开发、小程序开发和数据库技术。
 
+## 技术栈
 
-[jekyll-organization]: https://github.com/jekyll
+### 后端技术
+- **Java**：Spring Boot、Spring Cloud、MyBatis
+- **数据库**：MySQL、Redis、MongoDB
+- **服务器**：Tomcat、Nginx
+- **版本控制**：Git、GitHub
+
+### 前端技术
+- **HTML/CSS/JavaScript**：基础前端开发
+- **小程序**：微信小程序、支付宝小程序
+- **框架**：Vue.js（入门级）
+
+### 其他技能
+- **操作系统**：Windows、Linux
+- **开发工具**：IntelliJ IDEA、VS Code、Eclipse
+- **项目管理**：敏捷开发、Scrum
+
+## 教育背景
+
+- **本科**：软件工程专业
+- **相关课程**：数据结构、算法、操作系统、计算机网络、数据库原理、软件工程
+
+## 项目经验
+
+### 1. 个人博客网站
+- **技术栈**：Jekyll、GitHub Pages、CSS3
+- **描述**：使用 Jekyll 搭建的静态博客网站，用于分享技术学习心得和开发经验
+- **职责**：独立设计和开发整个网站
+
+### 2. 在线商城系统
+- **技术栈**：Spring Boot、MyBatis、MySQL、Vue.js
+- **描述**：一个基于 Spring Boot 和 Vue.js 的在线商城系统，包含商品管理、订单管理、用户管理等功能
+- **职责**：后端 API 开发和数据库设计
+
+### 3. 微信小程序
+- **技术栈**：微信小程序开发框架、云开发
+- **描述**：一个校园服务小程序，提供课程查询、成绩查询、校园新闻等功能
+- **职责**：小程序前端开发和云函数编写
+
+## 学习目标
+
+- 深入学习 Spring Cloud 微服务架构
+- 掌握 Docker 容器技术
+- 学习前端框架 Vue.js 和 React
+- 提升算法和数据结构能力
+- 参与开源项目贡献
+
+## 联系方式
+
+- **邮箱**：ifikifk@qq.com
+- **GitHub**：[XyfHub](https://github.com/XyfHub)
+- **微信**：请通过邮箱联系获取
+
+## 兴趣爱好
+
+- 编程和技术学习
+- 阅读技术书籍和博客
+- 运动：篮球、跑步
+- 音乐：听音乐、弹吉他
+- 旅行：探索新地方
+
+## 结语
+
+感谢您访问我的博客！我希望通过这个平台分享我的技术学习心得和开发经验，同时也希望能够与更多的开发者交流和学习。如果您有任何问题或建议，欢迎随时联系我。
+
+让我们一起在技术的道路上不断前进！🚀

@@ -1,0 +1,13 @@
+<!-- 导航栏 -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-left">
+      <a href="/" class="nav-brand">{{ site.title }}</a>
+    </div>
+    <div class="nav-right">
+      {% for item in site.menu %}
+        <a href="{{ item.url }}" class="nav-link">{{ item.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>

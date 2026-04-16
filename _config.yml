@@ -19,17 +19,59 @@
 # in the templates via {{ site.myvariable }}.
 
 title: 小徐的技术日记
+title_separator: "|"
 email: ifikifk@qq.com
 description: >- # this means to ignore newlines until "baseurl:"
     一名软件工程学生的技术成长记录，分享Java后端、小程序、数据库与编程日常
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  XyfHub
+github_username: XyfHub
+linkedin_username: # 你的LinkedIn用户名
+twitter_username: # 你的Twitter用户名
+
+# 个人信息
+author:
+  name: 小徐
+  bio: 软件工程专业学生，热爱编程和技术分享
+  avatar: # 头像图片路径
+
+# 站点设置
+paginate: 5 # 每页显示的文章数量
+paginate_path: "/page:num/"
+permalink: /:year/:month/:day/:title/
+
+# 导航菜单
+menu:
+  - title: 首页
+    url: /
+  - title: 文章
+    url: /posts/
+  - title: 关于
+    url: /about/
+  - title: 联系方式
+    url: /contact/
+
+# 社交链接
+social:
+  - name: GitHub
+    url: https://github.com/XyfHub
+    icon: github
+  - name: 邮箱
+    url: mailto:ifikifk@qq.com
+    icon: envelope
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+
+# 自定义样式
+defaults:
+  - scope:
+      path: "assets/css"
+    values:
+      sitemap: false
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -39,14 +81,16 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
