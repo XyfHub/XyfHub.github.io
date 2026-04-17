@@ -5,13 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
+  <!-- Site icons -->
+  <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="mask-icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" color="#fc5531">
+  <!-- Optional fallbacks (add these files if you want broader compatibility) -->
+  <link rel="alternate icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/img/site.webmanifest' | relative_url }}">
+  <meta name="theme-color" content="#fc5531">
   <!-- 自定义样式 -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}">
 </head>
 <body>
   {{ content }}
   <!-- JavaScript -->
-  <script src="/assets/js/main.js"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

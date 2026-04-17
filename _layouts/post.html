@@ -1,0 +1,109 @@
+---
+layout: default
+---
+{% assign raw_text = content | strip_html %}
+{% assign char_count = raw_text | size %}
+{% assign read_minutes = char_count | divided_by: 400 %}
+{% if read_minutes < 1 %}{% assign read_minutes = 1 %}{% endif %}
+
+<header class="header header--animated header--compact">
+  <div class="header__bg" aria-hidden="true"></div>
+  <div class="container header__inner">
+    <p class="header__eyebrow">Article · 深度阅读</p>
+    <h1 class="header__title">{{ site.title }}</h1>
+    <p class="header__desc">分享技术 · 记录成长</p>
+  </div>
+</header>
+
+{% include navbar.html %}
+
+<div class="container article-shell">
+  <nav class="breadcrumb" aria-label="面包屑">
+    <a href="{{ '/' | relative_url }}">首页</a>
+    <span class="breadcrumb__sep" aria-hidden="true">›</span>
+    <a href="{{ '/posts/' | relative_url }}">文章</a>
+    {% if page.categories.size > 0 %}
+      {% for category in page.categories limit: 1 %}
+        <span class="breadcrumb__sep" aria-hidden="true">›</span>
+        <span class="breadcrumb__current">{{ category }}</span>
+      {% endfor %}
+    {% endif %}
+    <span class="breadcrumb__sep" aria-hidden="true">›</span>
+    <span class="breadcrumb__current breadcrumb__current--muted">{{ page.title }}</span>
+  </nav>
+
+  <div class="article-layout">
+    <article class="article-main main-content article-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <header class="article-head">
+        <h1 class="article-head__title" itemprop="headline">{{ page.title }}</h1>
+        <div class="article-meta-bar">
+          <time class="article-meta-bar__item" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%Y年%m月%d日" }}
+          </time>
+          <span class="article-meta-bar__dot" aria-hidden="true">·</span>
+          <span class="article-meta-bar__item">约 {{ read_minutes }} 分钟阅读</span>
+          <span class="article-meta-bar__dot" aria-hidden="true">·</span>
+          <span class="article-meta-bar__item">{{ char_count }} 字</span>
+        </div>
+        {% if page.categories.size > 0 or page.tags.size > 0 %}
+          <div class="article-chips">
+            {% for category in page.categories %}
+              <span class="article-chip article-chip--cat">{{ category }}</span>
+            {% endfor %}
+            {% for tag in page.tags %}
+              <span class="article-chip">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </header>
+
+      <div class="post-content article-body" itemprop="articleBody">
+        {{ content }}
+      </div>
+
+      <footer class="article-end">
+        <p class="article-end__note">如果对你有帮助，欢迎收藏或在评论区交流。</p>
+        <a class="article-end__back" href="{{ '/posts/' | relative_url }}">← 返回文章列表</a>
+      </footer>
+    </article>
+
+    <aside class="article-aside" aria-label="侧栏">
+      <div class="sidebar sidebar-toc">
+        <h2 class="sidebar-toc__title">目录</h2>
+        <nav class="toc-nav" id="article-toc" aria-label="文章目录"></nav>
+      </div>
+
+      <div class="sidebar author-card">
+        <div class="author-card__avatar" aria-hidden="true">{{ site.author.name | slice: 0 }}</div>
+        <div>
+          <h2 class="author-card__name">{{ site.author.name }}</h2>
+          <p class="author-card__bio">{{ site.author.bio }}</p>
+          <div class="social-links author-card__social">
+            {% for link in site.social %}
+              <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar related-block">
+        <h2 class="related-block__title">更多文章</h2>
+        <ul class="related-list">
+          {% assign others = site.posts | where_exp: "p", "p.url != page.url" %}
+          {% for p in others limit: 6 %}
+            <li>
+              <a class="related-list__link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+              <span class="related-list__date">{{ p.date | date: "%Y-%m-%d" }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }} · 用心记录，与你分享</p>
+  </div>
+</footer>

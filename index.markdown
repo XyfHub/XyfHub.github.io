@@ -4,10 +4,12 @@ title: 小徐的技术日记
 ---
 
 <!-- 头部区域 -->
-<header class="header">
-  <div class="container">
-    <h1>{{ site.title }}</h1>
-    <p>{{ site.description }}</p>
+<header class="header header--animated">
+  <div class="header__bg" aria-hidden="true"></div>
+  <div class="container header__inner">
+    <p class="header__eyebrow">Welcome · 博客首页</p>
+    <h1 class="header__title">{{ site.title }}</h1>
+    <p class="header__desc">{{ site.description }}</p>
   </div>
 </header>
 
@@ -69,42 +71,39 @@ title: 小徐的技术日记
 
     <!-- 右侧边栏 -->
     <div class="col-md-4">
-      <!-- 个人信息 -->
-      <aside class="sidebar">
-        <h2>个人信息</h2>
-        <div class="author-info">
-          <h3>{{ site.author.name }}</h3>
-          <p>{{ site.author.bio }}</p>
-          <div class="social-links">
-            {% for link in site.social %}
-              <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
-            {% endfor %}
-          </div>
-        </div>
-      </aside>
-
-      <!-- 分类 -->
-      <aside class="sidebar">
-        <h2>文章分类</h2>
-        <ul class="category-list">
-          {% for category in site.categories %}
-            <li>
-              <a href="/categories/{{ category[0] }}">{{ category[0] }} ({{ category[1].size }})</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </aside>
-
-      <!-- 标签云 -->
-      <aside class="sidebar">
-        <h2>标签</h2>
-        <div class="tag-cloud">
-          {% for tag in site.tags %}
-            <a href="/tags/{{ tag[0] }}" style="font-size: {{ tag[1].size | times: 4 | plus: 12 }}px;">{{ tag[0] }}</a>
-          {% endfor %}
-        </div>
-      </aside>
     </div>
+  </div>
+
+  <!-- 底部模块 -->
+  <div class="home-sidebar-pair">
+    <!-- 个人信息 -->
+    <aside class="sidebar sidebar-symmetric">
+      <h2>个人信息</h2>
+      <div class="author-info">
+        <h3>{{ site.author.name }}</h3>
+        <p>{{ site.author.bio }}</p>
+        <div class="social-links">
+          {% for link in site.social %}
+            <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
+
+    <!-- 分类 -->
+    <aside class="sidebar sidebar-symmetric">
+      <h2>文章分类</h2>
+      <ul class="category-list category-list--compact">
+        {% for category in site.categories %}
+          <li>
+            <a href="/categories/{{ category[0] }}">
+              <span>{{ category[0] }}</span>
+              <span class="category-count">{{ category[1].size }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
   </div>
 </div>
 
