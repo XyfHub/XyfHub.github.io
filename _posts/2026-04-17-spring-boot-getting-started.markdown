@@ -4,6 +4,7 @@ title:  "Spring Boot 入门指南"
 date:   2026-04-17 10:00:00 +0800
 categories: Java 后端开发
 tags: Spring Boot 入门指南
+cover: /assets/images/springBoot.jpg
 ---
 # Spring Boot 入门指南
 

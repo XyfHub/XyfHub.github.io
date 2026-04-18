@@ -4,6 +4,7 @@ title:  "开始我的技术博客之旅"
 date:   2026-04-16 15:04:40 +0800
 categories: 博客 技术
 tags: Jekyll GitHub Pages
+cover: /assets/images/start.jpg
 ---
 欢迎来到我的技术博客！这是我的第一篇文章，我将在这里记录我的技术学习和成长历程。
 
