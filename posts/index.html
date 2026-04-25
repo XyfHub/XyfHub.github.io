@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 小徐的技术日记
+title: 文章列表
 ---
 
 <!-- 顶部导航栏 -->
@@ -18,7 +18,7 @@ title: 小徐的技术日记
       </div>
       <div class="spacer"></div>
       <div class="nav-menu">
-        <a href="/" class="nav-item active">
+        <a href="/" class="nav-item">
           <i class="ri-home-line nav-icon"></i>
           <span class="spacer"></span>
           <span class="nav-text">首页</span>
@@ -30,7 +30,7 @@ title: 小徐的技术日记
           <span class="nav-text">分类</span>
         </a>
         <div class="spacer"></div>
-        <a href="/posts/" class="nav-item">
+        <a href="/posts/" class="nav-item active">
           <i class="ri-article-line nav-icon"></i>
           <span class="spacer"></span>
           <span class="nav-text">文章</span>
@@ -58,27 +58,13 @@ title: 小徐的技术日记
   </div>
 </nav>
 
-<!-- 英雄区 -->
-<section class="hero-section">
+<!-- 页面标题区 -->
+<section class="page-title-section">
   <div class="container">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">分享技术，记录成长</h1>
-        <div class="spacer"></div>
-        <p class="hero-subtitle">一名软件工程学生的技术成长记录，分享Java后端、小程序、数据库与编程日常</p>
-        <div class="spacer"></div>
-        <div class="hero-buttons">
-          <a href="/posts/" class="btn-primary">
-            <span class="btn-text">浏览文章</span>
-            <span class="spacer"></span>
-            <i class="ri-arrow-right-line btn-icon"></i>
-          </a>
-          <div class="spacer"></div>
-          <a href="/about/" class="btn-secondary">
-            <span class="btn-text">关于我</span>
-          </a>
-        </div>
-      </div>
+    <div class="title-container">
+      <h1 class="page-title">技术文章</h1>
+      <div class="spacer"></div>
+      <p class="page-subtitle">分享技术经验，记录学习成长的每一步</p>
     </div>
   </div>
 </section>
@@ -89,23 +75,6 @@ title: 小徐的技术日记
     <div class="content-container">
       <!-- 左侧内容区 -->
       <div class="left-content">
-        <!-- 最新文章标题 -->
-        <div class="section-title">
-          <div class="title-left">
-            <i class="ri-file-text-line title-icon"></i>
-            <span class="spacer"></span>
-            <span class="title-text">最新文章</span>
-          </div>
-          <div class="spacer"></div>
-          <div class="title-right">
-            <a href="/posts/" class="view-all">
-              <span class="view-all-text">查看全部</span>
-              <span class="spacer"></span>
-              <i class="ri-arrow-right-line view-all-icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="spacer"></div>
         <!-- 文章列表 -->
         <div class="article-list">
           {% for post in site.posts %}
@@ -140,7 +109,21 @@ title: 小徐的技术日记
             </article>
           {% endfor %}
         </div>
+        
+        <!-- 分页 -->
+        {% if paginator.total_pages > 1 %}
+          <div class="pagination">
+            {% if paginator.previous_page %}
+              <a href="{{ paginator.previous_page_path }}" class="prev">上一页</a>
+            {% endif %}
+            <span class="page-number">第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span>
+            {% if paginator.next_page %}
+              <a href="{{ paginator.next_page_path }}" class="next">下一页</a>
+            {% endif %}
+          </div>
+        {% endif %}
       </div>
+      
       <!-- 右侧边栏 -->
       <div class="right-sidebar">
         <!-- 个人信息 -->
@@ -157,6 +140,7 @@ title: 小徐的技术日记
             </div>
           </div>
         </div>
+        
         <!-- 文章分类 -->
         <div class="sidebar-section">
           <h3 class="sidebar-title">文章分类</h3>

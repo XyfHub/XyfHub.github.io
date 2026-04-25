@@ -6,104 +6,191 @@ layout: default
 {% assign read_minutes = char_count | divided_by: 400 %}
 {% if read_minutes < 1 %}{% assign read_minutes = 1 %}{% endif %}
 
-<header class="header header--animated header--compact">
-  <div class="header__bg" aria-hidden="true"></div>
-  <div class="container header__inner">
-    <p class="header__eyebrow">Article · 深度阅读</p>
-    <h1 class="header__title">{{ site.title }}</h1>
-    <p class="header__desc">分享技术 · 记录成长</p>
-  </div>
-</header>
-
-{% include navbar.html %}
-
-<div class="container article-shell">
-  <nav class="breadcrumb" aria-label="面包屑">
-    <a href="{{ '/' | relative_url }}">首页</a>
-    <span class="breadcrumb__sep" aria-hidden="true">›</span>
-    <a href="{{ '/posts/' | relative_url }}">文章</a>
-    {% if page.categories.size > 0 %}
-      {% for category in page.categories limit: 1 %}
-        <span class="breadcrumb__sep" aria-hidden="true">›</span>
-        <span class="breadcrumb__current">{{ category }}</span>
-      {% endfor %}
-    {% endif %}
-    <span class="breadcrumb__sep" aria-hidden="true">›</span>
-    <span class="breadcrumb__current breadcrumb__current--muted">{{ page.title }}</span>
-  </nav>
-
-  <div class="article-layout">
-    <article class="article-main main-content article-card" itemscope itemtype="https://schema.org/BlogPosting">
-      <header class="article-head">
-        <h1 class="article-head__title" itemprop="headline">{{ page.title }}</h1>
-        <div class="article-meta-bar">
-          <time class="article-meta-bar__item" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {{ page.date | date: "%Y年%m月%d日" }}
-          </time>
-          <span class="article-meta-bar__dot" aria-hidden="true">·</span>
-          <span class="article-meta-bar__item">约 {{ read_minutes }} 分钟阅读</span>
-          <span class="article-meta-bar__dot" aria-hidden="true">·</span>
-          <span class="article-meta-bar__item">{{ char_count }} 字</span>
+<!-- 顶部导航栏 -->
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-container">
+      <div class="site-logo">
+        <div class="logo">
+          <span class="logo-text">徐</span>
         </div>
-        {% if page.categories.size > 0 or page.tags.size > 0 %}
-          <div class="article-chips">
-            {% for category in page.categories %}
-              <span class="article-chip article-chip--cat">{{ category }}</span>
-            {% endfor %}
-            {% for tag in page.tags %}
-              <span class="article-chip">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </header>
-
-      <div class="post-content article-body" itemprop="articleBody">
-        {{ content }}
-      </div>
-
-      <footer class="article-end">
-        <p class="article-end__note">如果对你有帮助，欢迎收藏或在评论区交流。</p>
-        <a class="article-end__back" href="{{ '/posts/' | relative_url }}">← 返回文章列表</a>
-      </footer>
-    </article>
-
-    <aside class="article-aside" aria-label="侧栏">
-      <div class="sidebar sidebar-toc">
-        <h2 class="sidebar-toc__title">目录</h2>
-        <nav class="toc-nav" id="article-toc" aria-label="文章目录"></nav>
-      </div>
-
-      <div class="sidebar author-card">
-        <div class="author-card__avatar" aria-hidden="true">{{ site.author.name | slice: 0 }}</div>
-        <div>
-          <h2 class="author-card__name">{{ site.author.name }}</h2>
-          <p class="author-card__bio">{{ site.author.bio }}</p>
-          <div class="social-links author-card__social">
-            {% for link in site.social %}
-              <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.name }}</a>
-            {% endfor %}
-          </div>
+        <div class="spacer"></div>
+        <div class="site-name">
+          <span class="site-name-text">小徐的技术日记</span>
         </div>
       </div>
-
-      <div class="sidebar related-block">
-        <h2 class="related-block__title">更多文章</h2>
-        <ul class="related-list">
-          {% assign others = site.posts | where_exp: "p", "p.url != page.url" %}
-          {% for p in others limit: 6 %}
-            <li>
-              <a class="related-list__link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
-              <span class="related-list__date">{{ p.date | date: "%Y-%m-%d" }}</span>
-            </li>
-          {% endfor %}
-        </ul>
+      <div class="spacer"></div>
+      <div class="nav-menu">
+        <a href="/" class="nav-item">
+          <i class="ri-home-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">首页</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/categories/" class="nav-item">
+          <i class="ri-folder-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">分类</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/posts/" class="nav-item">
+          <i class="ri-article-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">文章</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/about/" class="nav-item">
+          <i class="ri-user-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">关于</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/contact/" class="nav-item">
+          <i class="ri-message-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">联系方式</span>
+        </a>
       </div>
-    </aside>
+      <div class="spacer"></div>
+      <div class="search-box">
+        <i class="ri-search-line search-icon"></i>
+        <span class="spacer"></span>
+        <input type="text" class="search-input" placeholder="搜索文章...">
+      </div>
+    </div>
   </div>
-</div>
+</nav>
 
+<!-- 页面标题区 -->
+<section class="page-title-section">
+  <div class="container">
+    <div class="title-container">
+      <h1 class="page-title">{{ page.title }}</h1>
+      <div class="spacer"></div>
+      <p class="page-subtitle">深度阅读 · 技术分享</p>
+    </div>
+  </div>
+</section>
+
+<!-- 主内容区 -->
+<section class="main-content">
+  <div class="container">
+    <div class="content-container">
+      <!-- 左侧内容区 -->
+      <div class="left-content">
+        <!-- 面包屑导航 -->
+        <nav class="breadcrumb" aria-label="面包屑">
+          <a href="{{ '/' | relative_url }}">首页</a>
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <a href="{{ '/posts/' | relative_url }}">文章</a>
+          {% if page.categories.size > 0 %}
+            {% for category in page.categories limit: 1 %}
+              <span class="breadcrumb__sep" aria-hidden="true">›</span>
+              <span class="breadcrumb__current">{{ category }}</span>
+            {% endfor %}
+          {% endif %}
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <span class="breadcrumb__current breadcrumb__current--muted">{{ page.title }}</span>
+        </nav>
+        
+        <!-- 文章详情 -->
+        <article class="article-detail" itemscope itemtype="https://schema.org/BlogPosting">
+          <header class="article-detail-header">
+            {% if page.cover %}
+              <img src="{{ page.cover }}" alt="{{ page.title }}" class="article-detail-cover">
+            {% else %}
+              <div class="article-detail-cover" style="background: linear-gradient(135deg, #2563eb, #4338ca);"></div>
+            {% endif %}
+            <h1 class="article-detail-title" itemprop="headline">{{ page.title }}</h1>
+            <div class="article-meta">
+              <span class="article-meta-item">
+                <i class="ri-calendar-line article-meta-icon"></i>
+                <span>{{ page.date | date: "%Y年%m月%d日" }}</span>
+              </span>
+              <span class="article-meta-item">
+                <i class="ri-user-line article-meta-icon"></i>
+                <span>小徐</span>
+              </span>
+              <span class="article-meta-item">
+                <i class="ri-clock-line article-meta-icon"></i>
+                <span>约 {{ read_minutes }} 分钟阅读</span>
+              </span>
+            </div>
+            {% if page.categories.size > 0 or page.tags.size > 0 %}
+              <div class="article-tags">
+                {% for category in page.categories %}
+                  <span class="tag tag-java">{{ category }}</span>
+                {% endfor %}
+                {% for tag in page.tags %}
+                  <span class="tag tag-default">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </header>
+
+          <div class="post-content article-body" itemprop="articleBody">
+            {{ content }}
+          </div>
+
+          <footer class="article-end">
+            <p class="article-end__note">如果对你有帮助，欢迎收藏或在评论区交流。</p>
+            <a class="article-read-more" href="{{ '/posts/' | relative_url }}">返回文章列表 →</a>
+          </footer>
+        </article>
+      </div>
+      
+      <!-- 右侧边栏 -->
+      <div class="right-sidebar">
+        <!-- 文章目录 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">文章目录</h3>
+          <nav class="toc-nav" id="article-toc" aria-label="文章目录"></nav>
+        </div>
+        
+        <!-- 个人信息 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">个人信息</h3>
+          <div class="author-info">
+            <div class="author-avatar">徐</div>
+            <h4 class="author-name">{{ site.author.name }}</h4>
+            <p class="author-bio">{{ site.author.bio }}</p>
+            <div class="social-links">
+              {% for link in site.social %}
+                <a href="{{ link.url }}" target="_blank" class="social-link">{{ link.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+        <!-- 更多文章 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">更多文章</h3>
+          <ul class="article-list-small">
+            {% assign others = site.posts | where_exp: "p", "p.url != page.url" %}
+            {% for p in others limit: 6 %}
+              <li class="article-item-small">
+                <a href="{{ p.url | relative_url }}" class="article-link-small">{{ p.title }}</a>
+                <span class="article-date-small">{{ p.date | date: "%Y年%m月%d日" }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
 <footer class="footer">
   <div class="container">
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }} · 用心记录，与你分享</p>
+    <div class="footer-content">
+      <p class="footer-text">小徐的技术日记 | 分享技术，记录成长</p>
+      <div class="footer-social">
+        {% for link in site.social %}
+          <a href="{{ link.url }}" target="_blank" class="footer-social-link">{{ link.name }}</a>
+        {% endfor %}
+      </div>
+      <p class="footer-copyright">&copy; {{ site.time | date: "%Y" }} {{ site.title }}. 保留所有权利。</p>
+    </div>
   </div>
 </footer>

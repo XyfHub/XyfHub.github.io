@@ -1,0 +1,192 @@
+---
+layout: default
+title: 文章分类
+---
+
+<!-- 顶部导航栏 -->
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-container">
+      <div class="site-logo">
+        <div class="logo">
+          <span class="logo-text">徐</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="site-name">
+          <span class="site-name-text">小徐的技术日记</span>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="nav-menu">
+        <a href="/" class="nav-item">
+          <i class="ri-home-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">首页</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/posts/" class="nav-item">
+          <i class="ri-article-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">文章</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/categories/" class="nav-item active">
+          <i class="ri-folder-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">分类</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/about/" class="nav-item">
+          <i class="ri-user-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">关于</span>
+        </a>
+        <div class="spacer"></div>
+        <a href="/contact/" class="nav-item">
+          <i class="ri-message-line nav-icon"></i>
+          <span class="spacer"></span>
+          <span class="nav-text">联系方式</span>
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div class="search-box">
+        <i class="ri-search-line search-icon"></i>
+        <span class="spacer"></span>
+        <input type="text" class="search-input" placeholder="搜索文章...">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 页面标题区 -->
+<section class="page-title-section">
+  <div class="container">
+    <div class="title-container">
+      <h1 class="page-title">文章分类</h1>
+      <div class="spacer"></div>
+      <p class="page-subtitle">按分类浏览技术文章，快速找到你感兴趣的内容</p>
+    </div>
+  </div>
+</section>
+
+<!-- 主内容区 -->
+<section class="main-content">
+  <div class="container">
+    <div class="content-container">
+      <!-- 左侧内容区 -->
+      <div class="left-content">
+        <!-- 分类概览 -->
+        <div class="categories-overview">
+          {% for category in site.categories %}
+            <div class="category-card" style="{% if category[0] == 'Java' %}background: linear-gradient(180deg, #3b82f6, #2563eb);{% elsif category[0] == '小程序' %}background: linear-gradient(180deg, #a855f7, #9333ea);{% else %}background: linear-gradient(180deg, #eab308, #ca8a04);{% endif %}">
+              <div class="category-header">
+                <div class="category-icon">
+                  {% if category[0] == 'Java' %}<i class="ri-code-box-line icon"></i>{% elsif category[0] == '小程序' %}<i class="ri-smartphone-line icon"></i>{% else %}<i class="ri-database-2-line icon"></i>{% endif %}
+                </div>
+                <div class="spacer"></div>
+                <div class="category-count">
+                  <span class="count-text">{{ category[1].size }} 篇文章</span>
+                </div>
+              </div>
+              <div class="spacer"></div>
+              <h2 class="category-title">{{ category[0] }}</h2>
+              <div class="spacer"></div>
+              <p class="category-description">
+                {% if category[0] == 'Java' %}包含Java基础、Spring Boot、微服务等后端技术内容{% elsif category[0] == '小程序' %}微信小程序开发教程、实战经验和性能优化技巧{% else %}相关技术文章和教程{% endif %}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+        
+        <!-- 分类文章列表 -->
+        <div class="categories-list">
+          {% for category in site.categories %}
+            <div class="category-section">
+              <h2 class="category-section-title">{{ category[0] }}</h2>
+              <div class="spacer"></div>
+              <div class="category-articles">
+                {% for post in category[1] %}
+                  <article class="article-card">
+                    {% if post.cover %}
+                      <img src="{{ post.cover }}" alt="{{ post.title }}" class="article-cover">
+                    {% else %}
+                      <div class="article-cover" style="background: linear-gradient(135deg, #2563eb, #4338ca);"></div>
+                    {% endif %}
+                    <div class="article-content">
+                      {% if post.categories.size > 0 %}
+                        <div class="article-tags">
+                          {% for category in post.categories %}
+                            <span class="tag tag-java">{{ category }}</span>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      <h3 class="article-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                      <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+                      <div class="article-meta">
+                        <span class="article-meta-item">
+                          <i class="ri-calendar-line article-meta-icon"></i>
+                          <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
+                        </span>
+                        <span class="article-meta-item">
+                          <i class="ri-user-line article-meta-icon"></i>
+                          <span>小徐</span>
+                        </span>
+                      </div>
+                      <a href="{{ post.url }}" class="article-read-more">阅读更多 →</a>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <!-- 右侧边栏 -->
+      <div class="right-sidebar">
+        <!-- 个人信息 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">个人信息</h3>
+          <div class="author-info">
+            <div class="author-avatar">徐</div>
+            <h4 class="author-name">{{ site.author.name }}</h4>
+            <p class="author-bio">{{ site.author.bio }}</p>
+            <div class="social-links">
+              {% for link in site.social %}
+                <a href="{{ link.url }}" target="_blank" class="social-link">{{ link.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+        <!-- 文章分类 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">文章分类</h3>
+          <ul class="category-list">
+            {% for category in site.categories %}
+              <li class="category-item">
+                <a href="/categories/{{ category[0] }}" class="category-link">{{ category[0] }}</a>
+                <span class="category-count">{{ category[1].size }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-text">小徐的技术日记 | 分享技术，记录成长</p>
+      <div class="footer-social">
+        {% for link in site.social %}
+          <a href="{{ link.url }}" target="_blank" class="footer-social-link">{{ link.name }}</a>
+        {% endfor %}
+      </div>
+      <p class="footer-copyright">&copy; {{ site.time | date: "%Y" }} {{ site.title }}. 保留所有权利。</p>
+    </div>
+  </div>
+</footer>
