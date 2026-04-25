@@ -24,7 +24,7 @@ email: ifikifk@qq.com
 description: >- # this means to ignore newlines until "baseurl:"
     一名软件工程学生的技术成长记录，分享Java后端、小程序、数据库与编程日常
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://xyfhub.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: XyfHub
 linkedin_username: # 你的LinkedIn用户名
 twitter_username: # 你的Twitter用户名
