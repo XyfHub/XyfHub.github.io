@@ -33,7 +33,7 @@ layout: default
           <span class="nav-text">分类</span>
         </a>
         <div class="spacer"></div>
-        <a href="/posts/" class="nav-item">
+        <a href="/posts/" class="nav-item active">
           <i class="ri-article-line nav-icon"></i>
           <span class="spacer"></span>
           <span class="nav-text">文章</span>
@@ -141,12 +141,6 @@ layout: default
       
       <!-- 右侧边栏 -->
       <div class="right-sidebar">
-        <!-- 文章目录 -->
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">文章目录</h3>
-          <nav class="toc-nav" id="article-toc" aria-label="文章目录"></nav>
-        </div>
-        
         <!-- 个人信息 -->
         <div class="sidebar-section">
           <h3 class="sidebar-title">个人信息</h3>
@@ -160,6 +154,25 @@ layout: default
               {% endfor %}
             </div>
           </div>
+        </div>
+        
+        <!-- 文章目录 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">文章目录</h3>
+          <nav class="toc-nav" id="article-toc" aria-label="文章目录"></nav>
+        </div>
+        
+        <!-- 文章分类 -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">文章分类</h3>
+          <ul class="category-list">
+            {% for category in site.categories %}
+              <li class="category-item">
+                <a href="/categories/{{ category[0] }}" class="category-link">{{ category[0] }}</a>
+                <span class="category-count">{{ category[1].size }}</span>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
         
         <!-- 更多文章 -->
