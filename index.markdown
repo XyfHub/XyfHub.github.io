@@ -3,60 +3,7 @@ layout: default
 title: 小徐的技术日记
 ---
 
-<!-- 顶部导航栏 -->
-<nav class="top-nav">
-  <div class="container">
-    <div class="nav-container">
-      <div class="site-logo">
-        <div class="logo">
-          <span class="logo-text">徐</span>
-        </div>
-        <div class="spacer"></div>
-        <div class="site-name">
-          <span class="site-name-text">小徐的技术日记</span>
-        </div>
-      </div>
-      <div class="spacer"></div>
-      <div class="nav-menu">
-        <a href="/" class="nav-item active">
-          <i class="ri-home-line nav-icon"></i>
-          <span class="spacer"></span>
-          <span class="nav-text">首页</span>
-        </a>
-        <div class="spacer"></div>
-        <a href="/categories/" class="nav-item">
-          <i class="ri-folder-line nav-icon"></i>
-          <span class="spacer"></span>
-          <span class="nav-text">分类</span>
-        </a>
-        <div class="spacer"></div>
-        <a href="/posts/" class="nav-item">
-          <i class="ri-article-line nav-icon"></i>
-          <span class="spacer"></span>
-          <span class="nav-text">文章</span>
-        </a>
-        <div class="spacer"></div>
-        <a href="/about/" class="nav-item">
-          <i class="ri-user-line nav-icon"></i>
-          <span class="spacer"></span>
-          <span class="nav-text">关于</span>
-        </a>
-        <div class="spacer"></div>
-        <a href="/contact/" class="nav-item">
-          <i class="ri-message-line nav-icon"></i>
-          <span class="spacer"></span>
-          <span class="nav-text">联系方式</span>
-        </a>
-      </div>
-      <div class="spacer"></div>
-      <div class="search-box">
-        <i class="ri-search-line search-icon"></i>
-        <span class="spacer"></span>
-        <input type="text" class="search-input" placeholder="搜索文章...">
-      </div>
-    </div>
-  </div>
-</nav>
+{% include navbar.html active='home' %}
 
 <!-- 英雄区 -->
 <section class="hero-section">
