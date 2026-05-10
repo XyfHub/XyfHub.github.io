@@ -1,121 +1,49 @@
 ---
 layout: default
 title: 文章列表
+active_nav: 文章
 ---
 
-{% include navbar.html active='posts' %}
-
-<!-- 页面标题区 -->
-<section class="page-title-section">
+<div class="page-title-section">
   <div class="container">
-    <div class="title-container">
-      <h1 class="page-title">技术文章</h1>
-      <div class="spacer"></div>
-      <p class="page-subtitle">分享技术经验，记录学习成长的每一步</p>
-    </div>
+    <h1 class="page-title-section__title">所有文章</h1>
+    <p class="page-title-section__subtitle">分享技术经验，记录学习成长的每一步</p>
   </div>
-</section>
+</div>
 
-<!-- 主内容区 -->
 <section class="main-content">
   <div class="container">
-    <div class="content-container">
-      <!-- 左侧内容区 -->
-      <div class="left-content">
-        <!-- 文章列表 -->
-        <div class="article-list">
-          {% for post in site.posts %}
-            <article class="article-card">
-              {% if post.cover %}
-                <img src="{{ post.cover }}" alt="{{ post.title }}" class="article-cover">
-              {% else %}
-                <div class="article-cover" style="background: linear-gradient(135deg, #2563eb, #4338ca);"></div>
-              {% endif %}
-              <div class="article-content">
-                {% if post.categories.size > 0 %}
-                  <div class="article-tags">
-                    {% for category in post.categories %}
-                      <span class="tag tag-java">{{ category }}</span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <h3 class="article-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-                <div class="article-meta">
-                  <span class="article-meta-item">
-                    <span class="article-meta-icon">📅</span>
-                    <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
-                  </span>
-                  <span class="article-meta-item">
-                    <span class="article-meta-icon">👤</span>
-                    <span>小徐</span>
-                  </span>
+    <div class="two-col">
+      <div class="two-col__main">
+        {% for post in site.posts %}
+          <article class="article-card fade-in">
+            {% if post.cover %}
+              <a href="{{ post.url | relative_url }}" class="article-card__cover-wrap">
+                <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" class="article-card__cover" loading="lazy">
+              </a>
+            {% endif %}
+            <div class="article-card__body">
+              {% if post.categories.size > 0 %}
+                <div class="article-card__chips">
+                  {% for cat in post.categories %}
+                    <span class="chip">{{ cat }}</span>
+                  {% endfor %}
                 </div>
-                <a href="{{ post.url }}" class="article-read-more">阅读更多 →</a>
+              {% endif %}
+              <h3 class="article-card__title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h3>
+              <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+              <div class="article-card__meta">
+                <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
               </div>
-            </article>
-          {% endfor %}
-        </div>
-        
-        <!-- 分页 -->
-        {% if paginator.total_pages > 1 %}
-          <div class="pagination">
-            {% if paginator.previous_page %}
-              <a href="{{ paginator.previous_page_path }}" class="prev">上一页</a>
-            {% endif %}
-            <span class="page-number">第 {{ paginator.page }} 页，共 {{ paginator.total_pages }} 页</span>
-            {% if paginator.next_page %}
-              <a href="{{ paginator.next_page_path }}" class="next">下一页</a>
-            {% endif %}
-          </div>
-        {% endif %}
-      </div>
-      
-      <!-- 右侧边栏 -->
-      <div class="right-sidebar">
-        <!-- 个人信息 -->
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">个人信息</h3>
-          <div class="author-info">
-            <div class="author-avatar">徐</div>
-            <h4 class="author-name">{{ site.author.name }}</h4>
-            <p class="author-bio">{{ site.author.bio }}</p>
-            <div class="social-links">
-              {% for link in site.social %}
-                <a href="{{ link.url }}" target="_blank" class="social-link">{{ link.name }}</a>
-              {% endfor %}
             </div>
-          </div>
-        </div>
-        
-        <!-- 文章分类 -->
-        <div class="sidebar-section">
-          <h3 class="sidebar-title">文章分类</h3>
-          <ul class="category-list">
-            {% for category in site.categories %}
-              <li class="category-item">
-                <a href="/categories/{{ category[0] }}" class="category-link">{{ category[0] }}</a>
-                <span class="category-count">{{ category[1].size }}</span>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+          </article>
+        {% endfor %}
+      </div>
+      <div class="two-col__side">
+        {% include sidebar.html %}
       </div>
     </div>
   </div>
 </section>
-
-<!-- 页脚 -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <p class="footer-text">小徐的技术日记 | 分享技术，记录成长</p>
-      <div class="footer-social">
-        {% for link in site.social %}
-          <a href="{{ link.url }}" target="_blank" class="footer-social-link">{{ link.name }}</a>
-        {% endfor %}
-      </div>
-      <p class="footer-copyright">&copy; {{ site.time | date: "%Y" }} {{ site.title }}. 保留所有权利。</p>
-    </div>
-  </div>
-</footer>
