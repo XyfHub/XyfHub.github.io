@@ -1,25 +1,19 @@
 ---
+layout: default
+title: 页面未找到
 permalink: /404.html
-layout: page
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+<div class="page-title-section">
+  <div class="container">
+    <h1 class="page-title-section__title">404</h1>
+    <p class="page-title-section__subtitle">页面未找到</p>
+  </div>
 </div>
+
+<section class="main-content">
+  <div class="container" style="text-align:center;padding:3rem 1rem;">
+    <p style="font-size:1.1rem;color:var(--color-text-secondary);margin-bottom:1.5rem;">您访问的页面不存在，可能已被移除或地址输入有误。</p>
+    <a href="{{ '/' | relative_url }}" class="btn btn--primary" style="display:inline-flex;">返回首页</a>
+  </div>
+</section>
