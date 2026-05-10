@@ -1,0 +1,29 @@
+<aside class="sidebar">
+  <div class="sidebar__card">
+    <h3 class="sidebar__title">关于作者</h3>
+    <div class="author-card">
+      <div class="author-card__avatar">{{ site.author.name | slice: 0 }}</div>
+      <div class="author-card__info">
+        <h4 class="author-card__name">{{ site.author.name }}</h4>
+        <p class="author-card__bio">{{ site.author.bio }}</p>
+      </div>
+    </div>
+    <div class="author-card__social">
+      {% for link in site.social %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener" class="social-link">{{ link.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sidebar__card">
+    <h3 class="sidebar__title">文章分类</h3>
+    <ul class="category-list">
+      {% for category in site.categories %}
+        <li class="category-list__item">
+          <a href="{{ '/categories/' | relative_url }}#{{ category[0] | slugify }}" class="category-list__link">{{ category[0] }}</a>
+          <span class="category-list__count">{{ category[1].size }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</aside>

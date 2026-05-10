@@ -1,0 +1,11 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__text">{{ site.description }}</p>
+    <div class="footer__social">
+      {% for link in site.social %}
+        <a href="{{ link.url }}" target="_blank" rel="noopener" class="footer__link">{{ link.name }}</a>
+      {% endfor %}
+    </div>
+    <p class="footer__copyright">&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+  </div>
+</footer>
