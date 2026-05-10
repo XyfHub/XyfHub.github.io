@@ -1,0 +1,56 @@
+---
+layout: default
+title: 小徐的技术日记
+active_nav: 首页
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <h1 class="hero__title">分享技术，记录成长</h1>
+    <p class="hero__subtitle">{{ site.description }}</p>
+    <div class="hero__actions">
+      <a href="{{ '/posts/' | relative_url }}" class="btn btn--primary">浏览文章</a>
+      <a href="{{ '/about/' | relative_url }}" class="btn btn--secondary">关于我</a>
+    </div>
+  </div>
+</section>
+
+<section class="main-content">
+  <div class="container">
+    <div class="two-col">
+      <div class="two-col__main">
+        <h2 class="section-heading">最新文章</h2>
+
+        {% for post in site.posts %}
+          <article class="article-card fade-in">
+            {% if post.cover %}
+              <a href="{{ post.url | relative_url }}" class="article-card__cover-wrap">
+                <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" class="article-card__cover" loading="lazy">
+              </a>
+            {% endif %}
+            <div class="article-card__body">
+              {% if post.categories.size > 0 %}
+                <div class="article-card__chips">
+                  {% for cat in post.categories %}
+                    <span class="chip">{{ cat }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <h3 class="article-card__title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h3>
+              <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+              <div class="article-card__meta">
+                <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+
+      <div class="two-col__side">
+        {% include sidebar.html %}
+      </div>
+    </div>
+  </div>
+</section>
