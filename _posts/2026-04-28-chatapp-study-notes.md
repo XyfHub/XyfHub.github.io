@@ -4,7 +4,7 @@ title: "学习笔记：构建终端AI聊天应用（chatApp）"
 date: 2026-04-28 10:00:00 +0800
 categories: [学习笔记]
 tags: [Java, AI, 终端应用, HTTP, SSE]
-cover: /assets/images/study-notes-4.28.jpg
+
 ---
 
 ## chatApp 概述

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "工作记录：MCP 集成开发"
+title: "学习笔记：MCP 集成开发"
 date: 2026-05-10 10:00:00 +0800
 categories: [学习笔记]
 tags: [Java, MCP, Model Context Protocol, AI, 终端应用, JSON-RPC, MCP服务器]
-cover: /assets/images/study-notes-5.10.png
+
 ---
 
 ## 一、工作概述

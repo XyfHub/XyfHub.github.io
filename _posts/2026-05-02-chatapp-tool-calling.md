@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "工作记录：终端AI聊天程序工具调用功能开发"
+title: "学习笔记：终端AI聊天程序工具调用功能开发"
 date: 2026-05-02 10:00:00 +0800
 categories: [学习笔记]
 tags: [Java, AI, 工具调用, Function Calling, MiMo, 终端应用]
-cover: /assets/images/study-notes-5.02.png
+
 ---
 
 ## 一、问题
