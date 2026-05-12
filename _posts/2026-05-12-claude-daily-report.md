@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "学习笔记：Claude 工作日报 — 2026年5月12日"
-date: 2026-05-12 23:59:59 +0800
+date: 2026-05-12 11:26:00 +0800
 categories: [学习笔记]
 tags: [Claude, 日报, Java, MCP, Python, Jekyll, Skill, Clique]
 ---
