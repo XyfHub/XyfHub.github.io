@@ -2,7 +2,7 @@
 layout: post
 title:  "开始我的技术博客之旅"
 date:   2026-04-16 15:04:40 +0800
-categories: 博客 技术
+categories: [博客]
 tags: Jekyll GitHub Pages
 cover: /assets/images/start.jpg
 ---

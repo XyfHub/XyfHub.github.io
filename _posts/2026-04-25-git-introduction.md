@@ -2,7 +2,7 @@
 layout: post
 title: "Git入门指南：版本控制的利器"
 date: 2026-04-25 10:00:00 +0800
-categories: [Git, 版本控制]
+categories: [学习笔记]
 tags: [Git, 版本控制, 开发工具]
 cover: /assets/images/git.jpg
 ---

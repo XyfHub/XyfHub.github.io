@@ -2,7 +2,7 @@
 layout: post
 title: MySQL 数据库入门指南
 date: 2026-04-25 00:00:00 +0800
-categories: [数据库]
+categories: [后端开发]
 tags: [MySQL, 数据库, 入门]
 description: 详细介绍MySQL数据库的基本概念、核心功能、常见指令和最佳实践，帮助初学者快速上手。
 cover: /assets/images/mysql.jpg
