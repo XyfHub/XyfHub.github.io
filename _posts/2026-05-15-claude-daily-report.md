@@ -4,6 +4,7 @@ title: "学习笔记：Claude 工作日报 — 2026年5月15日"
 date: 2026-05-15 23:59:59 +0800
 categories: [学习笔记]
 tags: [Claude, 日报, Java, MCP, Firecrawl, CloudBase, Jackson, JSON-RPC]
+description: AIChat项目MCP子系统开发日报：接入CloudBase MCP、实现运行时动态配置、连接Firecrawl MCP网页抓取。
 ---
 
 ## 一、今日概览

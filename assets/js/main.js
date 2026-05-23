@@ -66,3 +66,111 @@
     fadeNodes.forEach(function (n) { fadeObserver.observe(n); });
   }
 })();
+
+(function () {
+  'use strict';
+
+  // 4. Dark mode toggle
+  var toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    var html = document.documentElement;
+    var saved = localStorage.getItem('theme');
+
+    function setTheme(theme, store) {
+      html.dataset.theme = theme;
+      toggle.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+      if (store !== false) localStorage.setItem('theme', theme);
+    }
+
+    if (saved) {
+      setTheme(saved, false);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      toggle.innerHTML = '☀️';
+    }
+
+    toggle.addEventListener('click', function () {
+      var current = html.dataset.theme;
+      if (!current && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('light');
+      } else {
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      }
+    });
+  }
+})();
+
+(function () {
+  'use strict';
+
+  var input = document.getElementById('search-input');
+  var results = document.getElementById('search-results');
+  if (!input || !results) return;
+
+  var posts = [];
+  var selectedIdx = -1;
+
+  function render(items) {
+    if (!items.length) {
+      results.innerHTML = '<li class="search-results--empty">未找到相关文章</li>';
+      return;
+    }
+    results.innerHTML = items.map(function (item, i) {
+      return '<li class="search-results__item' + (i === selectedIdx ? ' is-selected' : '') + '">' +
+        '<a href="' + item.url + '" class="search-results__link">' + item.title + '</a>' +
+        '<div class="search-results__meta">' + item.date + '</div>' +
+        '</li>';
+    }).join('');
+  }
+
+  function search(q) {
+    var lower = q.toLowerCase();
+    return posts.filter(function (p) {
+      return p.title.toLowerCase().indexOf(lower) !== -1 ||
+             (p.excerpt && p.excerpt.toLowerCase().indexOf(lower) !== -1) ||
+             (p.categories && p.categories.join(' ').toLowerCase().indexOf(lower) !== -1);
+    });
+  }
+
+  function doSearch(q) {
+    selectedIdx = -1;
+    if (!q.trim()) { results.innerHTML = ''; return; }
+    render(search(q));
+  }
+
+  fetch('/search.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) { posts = data; })
+    .catch(function () { posts = []; });
+
+  input.addEventListener('input', function () {
+    doSearch(this.value);
+  });
+
+  input.addEventListener('keydown', function (e) {
+    var items = results.querySelectorAll('.search-results__item');
+    if (!items.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectedIdx = Math.min(selectedIdx + 1, items.length - 1);
+      render(search(this.value));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectedIdx = Math.max(selectedIdx - 1, 0);
+      render(search(this.value));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      var target = selectedIdx >= 0 ? items[selectedIdx] : items[0];
+      if (target) {
+        var link = target.querySelector('a');
+        if (link) window.location.href = link.href;
+      }
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) {
+      results.innerHTML = '';
+    }
+  });
+})();

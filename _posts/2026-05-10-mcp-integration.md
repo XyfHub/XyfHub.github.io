@@ -4,6 +4,7 @@ title: "学习笔记：MCP 集成开发"
 date: 2026-05-10 10:00:00 +0800
 categories: [学习笔记]
 tags: [Java, MCP, Model Context Protocol, AI, 终端应用, JSON-RPC, MCP服务器]
+description: 为Clique终端AI聊天应用集成Model Context Protocol (MCP)支持，扩展AI助手的工具调用能力。
 
 ---
 

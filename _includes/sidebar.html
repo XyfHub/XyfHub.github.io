@@ -1,5 +1,13 @@
 <aside class="sidebar">
   <div class="sidebar__card">
+    <h3 class="sidebar__title">搜索文章</h3>
+    <div class="search-box">
+      <input type="text" id="search-input" class="search-box__input" placeholder="输入关键词搜索...">
+      <ul id="search-results" class="search-results"></ul>
+    </div>
+  </div>
+
+  <div class="sidebar__card">
     <h3 class="sidebar__title">关于作者</h3>
     <div class="author-card">
       <div class="author-card__avatar">{{ site.author.name | slice: 0 }}</div>

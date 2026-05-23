@@ -5,6 +5,7 @@
       {% for item in site.menu %}
         <li><a href="{{ item.url | relative_url }}" class="navbar__link{% if include.active == item.title %} is-active{% endif %}">{{ item.title }}</a></li>
       {% endfor %}
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="切换夜间模式" title="切换夜间模式">🌙</button></li>
     </ul>
   </div>
 </nav>

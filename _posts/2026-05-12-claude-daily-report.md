@@ -4,6 +4,7 @@ title: "学习笔记：Claude 工作日报 — 2026年5月12日"
 date: 2026-05-12 11:26:00 +0800
 categories: [学习笔记]
 tags: [Claude, 日报, Java, MCP, Python, Jekyll, Skill, Clique]
+description: 创建daily-report skill实现Claude Code全天会话自动整理并发布到GitHub Pages个人博客。
 ---
 
 ## 一、今日概览

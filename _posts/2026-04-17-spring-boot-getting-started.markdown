@@ -4,7 +4,7 @@ title:  "Spring Boot 入门指南"
 date:   2026-04-17 10:00:00 +0800
 categories: [后端开发]
 tags: Spring Boot 入门指南
-cover: /assets/images/springBoot.jpg
+description: 详细介绍Spring Boot框架的核心概念、自动配置原理和快速上手方法，适合Java后端初学者。
 ---
 # Spring Boot 入门指南
 

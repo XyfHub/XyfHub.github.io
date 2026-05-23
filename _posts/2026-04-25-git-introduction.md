@@ -4,7 +4,7 @@ title: "Git入门指南：版本控制的利器"
 date: 2026-04-25 10:00:00 +0800
 categories: [学习笔记]
 tags: [Git, 版本控制, 开发工具]
-cover: /assets/images/git.jpg
+description: 从零开始学习Git分布式版本控制系统，涵盖基本概念、常用命令和团队协作最佳实践。
 ---
 
 ## Git是什么？

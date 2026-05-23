@@ -4,7 +4,7 @@ title:  "开始我的技术博客之旅"
 date:   2026-04-16 15:04:40 +0800
 categories: [博客]
 tags: Jekyll GitHub Pages
-cover: /assets/images/start.jpg
+description: 记录我选择Jekyll搭建个人技术博客的原因和过程，分享静态网站生成的入门经验。
 ---
 欢迎来到我的技术博客！这是我的第一篇文章，我将在这里记录我的技术学习和成长历程。
 

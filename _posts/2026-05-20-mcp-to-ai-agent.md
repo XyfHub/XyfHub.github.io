@@ -4,6 +4,7 @@ title: "从 MCP 到 AI Agent：当大模型学会使用工具"
 date: 2026-05-20 10:00:00 +0800
 categories: [技术深度]
 tags: [MCP, AI Agent, Model Context Protocol, 大模型, 工具调用, Agent, 智能体]
+description: 从MCP和Function Calling出发，深入探讨AI Agent的概念、架构与实现，展望智能体技术的未来发展方向。
 
 ---
 

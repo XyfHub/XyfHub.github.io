@@ -20,11 +20,6 @@ layout: default
   <div class="article-layout">
     <article class="article-main" itemscope itemtype="https://schema.org/BlogPosting">
       <header class="article-head">
-        {% if page.cover %}
-          <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}" class="article-head__cover">
-        {% else %}
-          <div class="article-head__cover article-head__cover--placeholder"></div>
-        {% endif %}
         <h1 class="article-head__title" itemprop="headline">{{ page.title }}</h1>
         <div class="article-head__meta">
           <span>{{ page.date | date: "%Y年%m月%d日" }}</span>

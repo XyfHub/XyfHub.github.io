@@ -4,6 +4,7 @@ title: "学习笔记：终端AI聊天程序工具调用功能开发"
 date: 2026-05-02 10:00:00 +0800
 categories: [学习笔记]
 tags: [Java, AI, 工具调用, Function Calling, MiMo, 终端应用]
+description: 为终端AI聊天应用实现Function Calling工具调用能力，使AI能够操作本地文件和执行shell命令。
 
 ---
 

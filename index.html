@@ -21,13 +21,8 @@ active_nav: 首页
       <div class="two-col__main">
         <h2 class="section-heading">最新文章</h2>
 
-        {% for post in site.posts %}
+        {% for post in site.posts limit:5 %}
           <article class="article-card fade-in">
-            {% if post.cover %}
-              <a href="{{ post.url | relative_url }}" class="article-card__cover-wrap">
-                <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" class="article-card__cover" loading="lazy">
-              </a>
-            {% endif %}
             <div class="article-card__body">
               {% if post.categories.size > 0 %}
                 <div class="article-card__chips">
@@ -39,13 +34,17 @@ active_nav: 首页
               <h3 class="article-card__title">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
               </h3>
-              <p class="article-card__excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+              <p class="article-card__excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 200 }}</p>
               <div class="article-card__meta">
                 <span>{{ post.date | date: "%Y年%m月%d日" }}</span>
               </div>
             </div>
           </article>
         {% endfor %}
+
+        <div class="view-all-wrap">
+          <a href="{{ '/posts/' | relative_url }}" class="btn btn--primary">查看全部文章 &rarr;</a>
+        </div>
       </div>
 
       <div class="two-col__side">
