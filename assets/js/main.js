@@ -137,7 +137,7 @@
     render(search(q));
   }
 
-  fetch('/search.json')
+  fetch('/search.json?t=' + Date.now())
     .then(function (r) { return r.json(); })
     .then(function (data) { posts = data; })
     .catch(function () { posts = []; });
